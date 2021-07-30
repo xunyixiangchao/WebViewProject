@@ -33,4 +33,7 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$rootProject.androidXVersion"
     implementation 'com.google.android.material:material:1.1.0'
+    api project(":common")
+    //这里要写apt，否则serviceload找不到类，不能写在common里
+    annotationProcessor rootProject.googleAutoServiceDependency
 }
