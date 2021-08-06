@@ -3,10 +3,16 @@
     package="com.lis.webview">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <application
-        android:networkSecurityConfig="@xml/network_config">
-        <activity android:name=".activity.WebViewActivity" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application android:networkSecurityConfig="@xml/network_config">
+        <!--        不加无ActionBar主题会报错,
+        因为自定义的actionbar名字的原因，databing认为是系统actionbar，强转realayout时报错
+        改个id名称就好了-->
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:process=":webviewprocess"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

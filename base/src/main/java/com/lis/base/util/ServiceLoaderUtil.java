@@ -5,7 +5,7 @@ import java.util.ServiceLoader;
 /**
  * Created by lis on 2021/7/30.
  */
-public class ServiceUtil {
+public class ServiceLoaderUtil {
 
     public static <T> T getService(Class<T> service) {
         try {

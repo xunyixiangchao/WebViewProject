@@ -1,6 +1,7 @@
 package com.lis.webview.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +10,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.lis.webview.R;
-import com.lis.webview.activity.com.Constants;
+import com.lis.webview.common.Constants;
 import com.lis.webview.databinding.ActivityWebviewLayoutBinding;
 
 /**
@@ -24,11 +25,18 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_webview_layout);
+        mBinding.title.setText(getIntent().getStringExtra(Constants.TITLE));
+        mBinding.titleBar.setVisibility(getIntent().getBooleanExtra(Constants.IS_SHOW_ACTION_BAR
+                ,false)? View.VISIBLE:View.GONE);
         url = getIntent().getStringExtra(Constants.URL);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.content, WebViewFragment.getInstance(url));
         ft.commitAllowingStateLoss();
 
+    }
+
+    public void updateTitle(String title){
+        mBinding.title.setText(title);
     }
 }

@@ -1,5 +1,6 @@
 package com.lis.webview.activity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +14,15 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.lis.webview.R;
-import com.lis.webview.activity.com.Constants;
+import com.lis.webview.WebViewCallBack;
+import com.lis.webview.common.Constants;
 import com.lis.webview.databinding.FragmentWebviewBinding;
 
 /**
  * webview的Fragment
  * Created by lis on 2021/7/30.
  */
-public class WebViewFragment extends Fragment {
+public class WebViewFragment extends Fragment implements WebViewCallBack {
 
     private FragmentWebviewBinding mBinding;
 
@@ -43,16 +45,10 @@ public class WebViewFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_webview, container, false);
+        mBinding.webview.registerWebViewCallback(this);
+        mBinding.webview.addJsInterface("mywebview");
         mBinding.webview.loadUrl(mUrl);
-        mBinding.webview.getSettings().setJavaScriptEnabled(true);
         //设置webViewClient，防止http链接跳转到原生浏览器打开
-        mBinding.webview.setWebViewClient(new WebViewClient(){
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
         return mBinding.getRoot();
 
     }
@@ -63,5 +59,30 @@ public class WebViewFragment extends Fragment {
         WebViewFragment webViewFragment = new WebViewFragment();
         webViewFragment.setArguments(bundle);
         return webViewFragment;
+    }
+
+    @Override
+    public void pageStartedCallback(String url) {
+
+    }
+
+    @Override
+    public void pageFinishedCallback(String url) {
+
+    }
+
+    @Override
+    public void onErrorCallback() {
+
+    }
+
+    @Override
+    public void updateTitleCallback(String title) {
+
+    }
+
+    @Override
+    public void updateIconCallback(Bitmap icon) {
+
     }
 }

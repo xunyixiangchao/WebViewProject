@@ -9,20 +9,16 @@ import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.CycleInterpolator;
 
-import com.lis.base.util.ServiceUtil;
+import com.lis.base.util.ServiceLoaderUtil;
 import com.lis.common.autoservice.IWebViewService;
 import com.lis.webviewproject.databinding.ActivityMainBinding;
 
-import java.util.ServiceLoader;
-
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mMainBinding;
-    private static final String TAG=MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         mMainBinding.openWebview.setOnClickListener(v -> {
-            IWebViewService webViewService = ServiceUtil.getService(IWebViewService.class);
-            Log.i(TAG, "onCreate: webviewService"+webViewService);
+            IWebViewService webViewService = ServiceLoaderUtil.getService(IWebViewService.class);
+            Log.i(TAG, "onCreate: webviewService" + webViewService);
             // objectAnimator.start();
             if (webViewService != null) {
-                webViewService.startWebViewActivity(MainActivity.this, "http://www.baidu.com", "",
-                        false);
+                webViewService.startWebViewActivity(MainActivity.this, "http://www.baidu.com", "百度",
+                        true);
             }
         });
     }
