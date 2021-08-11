@@ -6,7 +6,7 @@ import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
-import com.lis.webview.WebViewCallBack;
+import com.lis.webview.webviewprocess.WebViewCallBack;
 
 /**
  * Created by lis on 2021/8/6.

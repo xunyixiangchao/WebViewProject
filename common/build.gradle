@@ -36,4 +36,8 @@ dependencies {
 
     annotationProcessor rootProject.googleAutoServiceDependency
     api rootProject.googleAutoServiceDependency
+    api 'com.kingja.loadsir:loadsir:1.3.6'
+    implementation 'com.airbnb.android:lottie:2.8.0'
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7'
+    api 'com.google.code.gson:gson:2.8.2'
 }

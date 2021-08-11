@@ -8,7 +8,6 @@ import android.webkit.WebView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.lis.webview.WebViewCallBack;
 import com.lis.webview.webviewprocess.settings.WebViewDefaultSettings;
 import com.lis.webview.webviewprocess.webchromeclient.MyWebChromeClient;
 import com.lis.webview.webviewprocess.webviewclient.MyWebViewClient;
@@ -36,6 +35,7 @@ public class BaseWebView extends WebView {
     }
 
     public void registerWebViewCallback(WebViewCallBack callBack) {
+        //设置webViewClient，防止http链接跳转到原生浏览器打开
         setWebViewClient(new MyWebViewClient(callBack));
         setWebChromeClient(new MyWebChromeClient(callBack));
     }
