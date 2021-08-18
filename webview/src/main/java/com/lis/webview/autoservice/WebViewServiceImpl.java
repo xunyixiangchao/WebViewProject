@@ -29,4 +29,12 @@ public class WebViewServiceImpl implements IWebViewService {
         intent.putExtra(Constants.IS_SHOW_ACTION_BAR, isShowActionBar);
         context.startActivity(intent);
     }
+
+    @Override
+    public void startDemoHtml(Context context) {
+        Intent intent = new Intent(context, WebViewActivity.class);
+        intent.putExtra(Constants.TITLE, "本地Demo测试页");
+        intent.putExtra(Constants.URL, Constants.ANDROID_ASSET_URI + "demo.html");
+        context.startActivity(intent);
+    }
 }

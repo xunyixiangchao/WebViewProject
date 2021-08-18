@@ -13,6 +13,7 @@
             android:name=".activity.WebViewActivity"
             android:process=":webviewprocess"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <service android:name=".mainprocess.MainProcessCommandService" />
     </application>
 
 </manifest>

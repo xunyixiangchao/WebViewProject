@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "onCreate: webviewService" + webViewService);
             // objectAnimator.start();
             if (webViewService != null) {
-                webViewService.startWebViewActivity(MainActivity.this, "http://www.baidu.com", "百度",
-                        true);
+                // webViewService.startWebViewActivity(MainActivity.this, "http://www.baidu.com", "百度",
+                //         true);
+                webViewService.startDemoHtml(this);
             }
         });
     }
