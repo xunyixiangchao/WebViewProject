@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.lis.base.BaseApplication;
 import com.lis.webview.IMainToWebViewCallbackAidlInterface;
@@ -59,6 +60,7 @@ public class WebViewCommandDispatcher implements ServiceConnection {
                 mWebViewToMainAidlInterface.handleWebViewCommand(commandName, param, new IMainToWebViewCallbackAidlInterface.Stub() {
                     @Override
                     public void onResult(String callbackName, String response) throws RemoteException {
+                        Log.i("WebViewDispatcher", "onResult: " + response);
                         webView.handleCallback(callbackName, response);
                     }
                 });

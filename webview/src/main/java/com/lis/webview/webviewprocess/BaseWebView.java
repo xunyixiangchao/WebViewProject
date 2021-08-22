@@ -66,9 +66,12 @@ public class BaseWebView extends WebView {
 
     public void handleCallback(final String callbackName, final String response) {
         if (!TextUtils.isEmpty(callbackName) && !TextUtils.isEmpty(response)) {
-            String js = "javascript:mywebviewjs.callback('" + callbackName + "'," + response + ")";
-            Log.e(TAG, js);
-            evaluateJavascript(js, null);
+            //同一线程才能调用
+            post(() -> {
+                String js = "javascript:mywebviewjs.callback('" + callbackName + "'," + response + ")";
+                Log.i(TAG, js);
+                evaluateJavascript(js, null);
+            });
         }
     }
 }

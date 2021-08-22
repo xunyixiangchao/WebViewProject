@@ -1,3 +1,4 @@
+include ':usercenter'
 include ':common'
 include ':base'
 include ':webview'
